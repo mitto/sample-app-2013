@@ -4,14 +4,16 @@ describe "UserPages" do
 
   subject { page }
 
+  let(:signup) { 'Sign up' }
+
   describe "signup page" do
 
     before { visit signup_path }
 
     let(:submit) { "Create my account" }
 
-    it { should have_content('Sign up') }
-    it { should have_title(full_title('Sign up')) }
+    it { should have_content(signup) }
+    it { should have_title(full_title(signup)) }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -21,7 +23,7 @@ describe "UserPages" do
       describe "after submission" do
         before { click_button submit }
 
-        it { should have_title('Sign up') }
+        it { should have_title(signup) }
         it { should have_content('error') }
 
         it { should have_content("Name can't be blank") }
